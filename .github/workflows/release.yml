@@ -1,0 +1,68 @@
+name: Release
+
+on:
+  workflow_dispatch: 
+  release:
+    types: # This configuration does not affect the page_build event above
+      - published
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  GH_TOKEN: ${{secrets.PAT_TOKEN}}
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generate Short SHA and Unique runner id
+        id: vars
+        run: |
+          echo ::set-output name=sha_short::${GITHUB_SHA::7}
+          echo ::set-output name=uuid::${{ env.BRANCH_NAME }}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
+      - name: Trigger Integration tests remote task
+        id: integration_test_trigger
+        timeout-minutes: 20
+        uses: ironSource/action-trigger-workflow@main
+        with:
+          owner: ${{ secrets.TRIGGERED_OWNER }}
+          repo: ${{ secrets.TRIGGERED_REPO }}
+          github_token: ${{ secrets.PAT_TOKEN }}
+          workflow_file_name: api-tests-js.yml
+          job_uuid: "${{ steps.vars.outputs.uuid }}"
+          monitored_job_name: test
+          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{ env.BRANCH_NAME }}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}"}'
+
+      - name: Print Integration Tests results
+        if: failure()
+        run: |
+            echo Checking log for workflow ${{steps.integration_test_trigger.outputs.workflow_id}} job ${{steps.integration_test_trigger.outputs.job_id}}
+            gh --repo ${{ secrets.TRIGGERED_OWNER }}/${{ secrets.TRIGGERED_REPO }} run view --job ${{steps.integration_test_trigger.outputs.job_id}} --log
+
+  build:
+    needs: integration-test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14.x
+        registry-url: 'https://ironsrc.jfrog.io/artifactory/api/npm/npmjs-local/'
+        scope: '@ironsrc'
+    - name: Setup git
+      run: |
+        git config --global user.name "IronSource"
+        git config --global user.email "sheriff@is.com"
+    - name: Tag version
+      run: npm version --no-git-tag-version ${{ github.event.release.tag_name }}
+    - name: Install build packages
+      run: npm install
+    - name: Build package
+      run: npm run build
+    - name: Publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      run: |
+        npm publish
+      shell: bash

@@ -1,0 +1,58 @@
+{
+  "name": "@ironsrc/mobile-api",
+  "version": "1.2.0",
+  "description": "IronSource API implementations for Node.JS",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "node -v && tsc -v && tsc --build",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "prepare": "npm run build",
+    "prepublishOnly": "tsc",
+    "test": "mocha --no-timeouts -t 40000 --colors -r ts-node/register -r dotenv/config tests/unit_tests/*.test.ts",
+    "integrationTest": "mocha --no-timeouts -t 60000 --colors -r ts-node/register -r dotenv/config tests/integration_tests/*.test.ts"
+  },
+  "author": "Itay Levy",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/async": "^3.2.10",
+    "@types/chai": "^4.2.11",
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/chai-things": "0.0.34",
+    "@types/lodash": "^4.14.149",
+    "@types/mocha": "^5.2.7",
+    "@types/node-gzip": "^1.1.0",
+    "@types/sinon": "^10.0.13",
+    "@types/sinon-chai": "^3.2.8",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-things": "^0.2.0",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "mocha": "^9.2.2",
+    "moment": "^2.29.2",
+    "rimraf": "^3.0.0",
+    "showdown": "^2.1.0",
+    "sinon": "^14.0.0",
+    "sinon-chai": "^3.7.0",
+    "ts-mocha": "^9.0.2",
+    "typedoc": "^0.23.10",
+    "typedoc-plugin-markdown": "^3.13.4",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "async": "^3.0.0",
+    "axios": "^0.27.2",
+    "form-data": "^4.0.0",
+    "lodash": "^4.17.15",
+    "node-gzip": "^1.1.2",
+    "zlib": "^1.0.5"
+  }
+}

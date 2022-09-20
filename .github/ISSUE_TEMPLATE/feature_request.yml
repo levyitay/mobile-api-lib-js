@@ -1,0 +1,34 @@
+---
+name: IronSource API feature request
+description: Suggest a feature for IronSource API Library
+labels: ["feature"]
+body:
+  - type: markdown
+    attributes:
+      # yamllint disable rule:line-length
+      value: "
+        <img src='https://raw.githubusercontent.com/ironSource/mobile-api-lib-js/main/docs/is_logo.jpg' align='left' width='80' height='80'>
+        Thank you for proposing a new feature!
+        
+        **Please do not open an issue related to ironSource platform, sdk and etc. Only for ironSource API Library.**
+
+        You do not have to create an issue if you have a pull request ready.
+
+        You can open [Pull Request](https://github.com/ironSource/mobile-api-lib-js/pulls) immediately instead.
+        <br clear='left'/>"
+
+      # yamllint enable rule:line-length
+  - type: textarea
+    attributes:
+      label: Description
+      description: A short description of your feature
+  - type: checkboxes
+    attributes:
+      label: Are you willing to submit a PR?
+      description: >
+        This is not required, but we will be happy if you would like to submit a pull-request.
+      options:
+        - label: Yes I am willing to submit a PR!
+  - type: markdown
+    attributes:
+      value: "Thanks you!"

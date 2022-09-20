@@ -1,0 +1,65 @@
+---
+name: IronSource issue report
+description: Problems and issues with IronSource API Library
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      # yamllint disable rule:line-length
+      value: "
+        <img src='https://raw.githubusercontent.com/ironSource/mobile-api-lib-js/main/docs/is_logo.jpg' align='left' width='80' height='80'>
+        Thank you for finding the time to improve our API Library.
+        
+        **Please do not open an issue related to ironSource platform, sdk and etc. Only for ironSource API Library.**
+
+        You do not have to create an issue if you have a pull request ready.
+
+        You can open [Pull Request](https://github.com/ironSource/mobile-api-lib-js/pulls) immediately instead.
+        <br clear='left'/>"
+      # yamllint enable rule:line-length
+  - type: dropdown
+    attributes:
+      label: IronSource API Library version
+      description: >
+        What IronSource API Library version are you using?
+      multiple: false
+      options:
+        - "2.0.0 (latest released)"
+        - "main (development)"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: Describe the issue / bug
+      placeholder: >
+        Please provide the context in which the problem occurred and explain what happened.
+  - type: textarea
+    attributes:
+      label: What you think should happen instead
+      description: What do you think went wrong?
+      placeholder: >
+        Please explain why do you think the behavior is a bug.
+  - type: textarea
+    attributes:
+      label: How to reproduce
+      description: >
+        How can we reproduce the problem?
+      placeholder: >
+        Please make sure you provide a reproducible step-by-step detailed information on how to reproduce the issue.
+  - type: input
+    attributes:
+      label: Node.JS version
+      description: Which Node.JS version are you using?
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Are you willing to submit PR?
+      description: >
+        This is not required, but we will be happy if you would like to submit a pull-request.
+      options:
+        - label: Yes I am willing to submit a PR!
+  - type: markdown
+    attributes:
+      value: "Thanks you!"

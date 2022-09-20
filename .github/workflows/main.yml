@@ -1,0 +1,43 @@
+name: Pull-Request-CI
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "lib/**"
+      - "tests/**"
+    tags-ignore:
+      - '**'
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  GH_TOKEN: ${{secrets.PAT_TOKEN}}
+
+jobs:
+  build_and_test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      max-parallel: 1
+      matrix:
+        node-version: [14]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: run npm install
+      run: npm install
+    - name: check lint
+      run: npm run lint
+    - name: run tests
+      run: npm test
+    - name: gitleaks-action
+      run: |
+        brew install gitleaks
+        gitleaks --verbose detect --log-opts --since="2021-11-25"
+  
+  

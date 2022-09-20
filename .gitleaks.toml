@@ -1,0 +1,7 @@
+title = "GitLeaks config"
+
+[extend]
+    useDefault = true
+[allowlist]
+    regexes = ['''ASIAQO6NX2IJOKSSQ34R''']
+    paths = [ '''docs/''']
