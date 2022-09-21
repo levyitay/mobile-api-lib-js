@@ -16,8 +16,12 @@
     "test": "mocha --no-timeouts -t 40000 --colors -r ts-node/register -r dotenv/config tests/unit_tests/*.test.ts",
     "integrationTest": "mocha --no-timeouts -t 60000 --colors -r ts-node/register -r dotenv/config tests/integration_tests/*.test.ts"
   },
-  "author": "Itay Levy",
-  "license": "ISC",
+  "author": "ironSource Ltd.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ironSource/mobile-api-lib-js.git"
+  },
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/async": "^3.2.10",
     "@types/chai": "^4.2.11",
