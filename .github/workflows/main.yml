@@ -11,7 +11,6 @@ on:
       - '**'
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-  GH_TOKEN: ${{secrets.PAT_TOKEN}}
 
 jobs:
   build_and_test:
