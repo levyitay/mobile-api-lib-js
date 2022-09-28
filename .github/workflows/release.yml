@@ -18,24 +18,28 @@ jobs:
         run: |
           echo ::set-output name=sha_short::${GITHUB_SHA::7}
           echo ::set-output name=uuid::${{ env.BRANCH_NAME }}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
-      - name: Trigger Integration tests remote task
-        id: integration_test_trigger
-        timeout-minutes: 20
-        uses: ironSource/action-trigger-workflow@main
+      - name: Install Node 14
+        uses: actions/setup-node@v2
         with:
-          owner: ${{ secrets.TRIGGERED_OWNER }}
-          repo: ${{ secrets.TRIGGERED_REPO }}
-          github_token: ${{ secrets.PAT_TOKEN }}
-          workflow_file_name: api-tests-js.yml
-          job_uuid: "${{ steps.vars.outputs.uuid }}"
-          monitored_job_name: test
-          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{ env.BRANCH_NAME }}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}"}'
+          node-version: "14"
 
-      - name: Print Integration Tests results
-        if: failure()
+      - name: create .env file
         run: |
-            echo Checking log for workflow ${{steps.integration_test_trigger.outputs.workflow_id}} job ${{steps.integration_test_trigger.outputs.job_id}}
-            gh --repo ${{ secrets.TRIGGERED_OWNER }}/${{ secrets.TRIGGERED_REPO }} run view --job ${{steps.integration_test_trigger.outputs.job_id}} --log
+          echo API_CI_SECRET=${{ secrets.API_CI_SECRET }} >> .env
+          echo API_CI_TOKEN=${{ secrets.API_CI_TOKEN }} >> .env
+          echo API_CI_USER=${{ secrets.API_CI_USER }} >> .env
+          echo DEMO_ACCOUNT_SECRET=${{ secrets.DEMO_ACCOUNT_SECRET }} >> .env
+          echo DEMO_ACCOUNT_TOKEN=${{ secrets.DEMO_ACCOUNT_TOKEN }} >> .env
+          echo DEMO_ACCOUNT_USER=${{ secrets.DEMO_ACCOUNT_USER }} >> .env
+      - name: install deps
+        run: |
+          npm install
+      - name: Run integration test
+        run: |
+          npm run integrationTest
+      - name: cleanup
+        run: |
+          rm .env
 
   build:
     needs: integration-test
