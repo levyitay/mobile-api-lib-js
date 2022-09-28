@@ -1,6 +1,6 @@
 {
   "name": "@ironsource/mobile-api-lib-js",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "IronSource API implementations for Node.JS",
   "typings": "dist/index.d.ts",
   "main": "dist/index.js",
