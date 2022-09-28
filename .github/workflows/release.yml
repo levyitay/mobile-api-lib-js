@@ -7,7 +7,6 @@ on:
       - published
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-  GH_TOKEN: ${{secrets.PAT_TOKEN}}
 
 jobs:
   integration-test:
@@ -48,12 +47,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 14.x
-        registry-url: 'https://ironsrc.jfrog.io/artifactory/api/npm/npmjs-local/'
-        scope: '@ironsrc'
+        registry-url: 'https://registry.npmjs.org'
+        scope: '@ironsource'
     - name: Setup git
       run: |
         git config --global user.name "IronSource"
-        git config --global user.email "sheriff@is.com"
+        git config --global user.email "itayl@is.com"
     - name: Tag version
       run: npm version --no-git-tag-version ${{ github.event.release.tag_name }}
     - name: Install build packages
