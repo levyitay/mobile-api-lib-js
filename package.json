@@ -1,17 +1,16 @@
 {
   "name": "@ironsource/mobile-api-lib-js",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "IronSource API implementations for Node.JS",
-  "typings": "dist/index.d.ts",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "dist/**/*"
+    "lib/**/**"
   ],
   "scripts": {
     "build": "node -v && tsc -v && tsc --build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prepare": "npm run build",
     "prepublishOnly": "tsc",
     "test": "mocha --no-timeouts -t 40000 --colors -r ts-node/register -r dotenv/config tests/unit_tests/*.test.ts",
     "integrationTest": "mocha --no-timeouts -t 60000 --colors -r ts-node/register -r dotenv/config tests/integration_tests/*.test.ts"
