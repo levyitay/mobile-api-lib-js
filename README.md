@@ -8,12 +8,12 @@
 This module is installed via npm:
 
 ```
-npm install --save @ironsrc/mobile-api
+npm install --save @ironsource/mobile-api-lib-js
 ```
 
 ## Simple Example:
 ```js
-const {IronSource,AppPromotionAPI,MonetizeEnums,AppPromotionEnums} = require('@ironsrc/mobile-api');
+const {IronSource,AppPromotionAPI,MonetizeEnums,AppPromotionEnums} = require('@ironsource/mobile-api-lib-js');
 const fs = require('fs');
 
 
@@ -42,7 +42,7 @@ Before starting to use the API make sure to get the credentials from ironSource 
 
 And set the Access Key, Secret Key and Refresh Token: 
 ```js
-{IronSource} = require('@ironsrc/mobile-api');
+{IronSource} = require('@ironsource/mobile-api-lib-js');
 
 var ironsource = new IronSource();
 ironsource.setCredentials('my_user_name','my_secret_key','my_refresh_token');
