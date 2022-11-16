@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib/**/**"
+    "dist/**/**"
   ],
   "scripts": {
     "build": "node -v && tsc -v && tsc --build",
