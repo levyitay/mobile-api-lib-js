@@ -3,15 +3,15 @@
   "version": "1.0.4",
   "description": "IronSource API implementations for Node.JS",
   "typings": "lib/index.d.ts",
-  "main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "dist/lib/**"
+    "lib/**"
   ],
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prepublishOnly": "cd dist && cp ../README.md . && cp ../LICENSE .",
+    "prepublishOnly": "cp ../README.md . && cp ../LICENSE . ",
     "test": "mocha --no-timeouts -t 40000 --colors -r ts-node/register -r dotenv/config tests/unit_tests/*.test.ts",
     "integrationTest": "mocha --no-timeouts -t 60000 --colors -r ts-node/register -r dotenv/config tests/integration_tests/*.test.ts"
   },
