@@ -3,10 +3,10 @@
   "version": "1.0.3",
   "description": "IronSource API implementations for Node.JS",
   "typings": "lib/index.d.ts",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
   "files": [
-    "lib/**/**"
+    "dist/lib/**"
   ],
   "scripts": {
     "build": "tsc --build",
@@ -15,6 +15,7 @@
     "test": "mocha --no-timeouts -t 40000 --colors -r ts-node/register -r dotenv/config tests/unit_tests/*.test.ts",
     "integrationTest": "mocha --no-timeouts -t 60000 --colors -r ts-node/register -r dotenv/config tests/integration_tests/*.test.ts"
   },
+  
   "author": "ironSource Ltd.",
   "repository": {
     "type": "git",
