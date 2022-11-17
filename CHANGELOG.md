@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/ironsource/mobile-api-lib-js/compare/v1.0.2...v1.0.3) (2022-11-17)
+
+
+### Miscellaneous Chores
+
+* Release 1.0.3 ([bfacc6c](https://github.com/ironsource/mobile-api-lib-js/commit/bfacc6c9efacdca82bda62a77bbd853fd9595642))
+
 ## [1.0.2](https://github.com/ironsource/mobile-api-lib-js/compare/v1.0.1...v1.0.2) (2022-11-17)
 
 
