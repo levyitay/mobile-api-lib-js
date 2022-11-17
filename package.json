@@ -6,12 +6,12 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "dist/**/**"
+    "lib/**/**"
   ],
   "scripts": {
-    "build": "node -v && tsc -v && tsc --build",
+    "build": "tsc --build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prepublishOnly": "tsc",
+    "prepublishOnly": "cd dist && cp ../README.md . && cp ../LICENSE .",
     "test": "mocha --no-timeouts -t 40000 --colors -r ts-node/register -r dotenv/config tests/unit_tests/*.test.ts",
     "integrationTest": "mocha --no-timeouts -t 60000 --colors -r ts-node/register -r dotenv/config tests/integration_tests/*.test.ts"
   },
