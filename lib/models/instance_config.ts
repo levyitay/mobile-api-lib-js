@@ -633,7 +633,7 @@ class InMobiBase extends InstanceConfig {
 export class InMobiInstance extends InMobiBase {
 
     constructor(instanceName: string, instanceAdUnit: MonetizeEnums.AdUnits, status: boolean,
-        placementId: string, adSource: MonetizeEnums.Networks, options?: { instanceId?: number, rate?: number }) {
+        placementId: string, options?: { instanceId?: number, rate?: number }) {
         const { instanceId, rate } = { ...defaultValues, ...options };
         super(instanceName, instanceAdUnit, status, placementId, MonetizeEnums.Networks.InMobi, instanceId, rate);
     }
@@ -642,7 +642,7 @@ export class InMobiInstance extends InMobiBase {
 export class InMobiBiddingInstance extends InMobiBase {
 
     constructor(instanceName: string, instanceAdUnit: MonetizeEnums.AdUnits, status: boolean,
-        placementId: string, adSource: MonetizeEnums.Networks, options?: { instanceId?: number, rate?: number }) {
+        placementId: string, options?: { instanceId?: number, rate?: number }) {
         const { instanceId, rate } = { ...defaultValues, ...options };
         super(instanceName, instanceAdUnit, status, placementId, 
             MonetizeEnums.Networks.InMobiBidding, instanceId, rate);
