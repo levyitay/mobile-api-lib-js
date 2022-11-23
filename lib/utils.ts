@@ -67,15 +67,16 @@ export async function executeRequest(options: AxiosRequestConfig): Promise<Respo
 
     } catch (ex: any) {
         if (process.env.DEBUG == 'true') {
-            console.error(`Error executing request ${JSON.stringify(ex.response.data)} 
-            status code: ${ex.response.statusCode} `);
+            console.error(`Error executing request ${JSON.stringify(ex.response?.data || ex.message)} 
+            status code: ${ex.response?.status} `);
         }
-        if (ex.response) {
-            resObj.msg = ex.response.data;
+        if (ex.response?.data) {
+            resObj.msg = (typeof ex.response.data == 'object') ? JSON.stringify(ex.response.data) : ex.response.data;
             resObj.errorCode = ex.response.status;
         } else {
             resObj.msg = ex.message;
             resObj.errorCode = 500;
+
         }
     }
     return resObj;
