@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.6](https://github.com/ironsource/mobile-api-lib-js/compare/v1.0.5...v1.0.6) (2022-11-23)
+
+
+### Bug Fixes
+
+* formatting exception message so it could be passed down properly ([7f70af0](https://github.com/ironsource/mobile-api-lib-js/commit/7f70af0681bd33eff7fa1969dbb7384a0212fcec))
+* remove extra param from inmobi instance and bidding instance ([6ad6239](https://github.com/ironsource/mobile-api-lib-js/commit/6ad6239e1a31a129638688286b528bfab397f57c))
+
 ## [1.0.5](https://github.com/ironsource/mobile-api-lib-js/compare/v1.0.4...v1.0.5) (2022-11-17)
 
 
