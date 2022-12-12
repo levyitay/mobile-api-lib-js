@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/ironsource/mobile-api-lib-js/compare/v1.0.6...v1.1.0) (2022-12-12)
+
+
+### Features
+
+* implementing support for instances V3 ([c581e93](https://github.com/ironsource/mobile-api-lib-js/commit/c581e931c1e274bdd25848013dc51bf662b056ee))
+
+
+### Bug Fixes
+
+* chartboost appid typo ([226c0d2](https://github.com/ironsource/mobile-api-lib-js/commit/226c0d21b780387c6fe5678881f30e8204ca1675))
+
 ## [1.0.6](https://github.com/ironsource/mobile-api-lib-js/compare/v1.0.5...v1.0.6) (2022-11-23)
 
 
