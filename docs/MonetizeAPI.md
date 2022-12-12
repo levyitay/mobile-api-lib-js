@@ -84,6 +84,8 @@ ___
 | `applicationKey` | `string` | Application Key to add instance to. |
 | `instances` | [`InstanceConfig`](#instanceconfig)[] | List of InstanceConfigs to be add. |
 
+**Note:** To add instances to a network that already exists, pass instance objects with empty app config (`''`) 
+
 #### Returns
 
 `Promise`<`string`\>
