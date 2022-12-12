@@ -346,7 +346,7 @@ export class ChartboostInstance extends InstanceConfig {
 
     public getAppDataObject(): any {
         return {
-            appId: this.getAppId(),
+            appID: this.getAppId(),
             appSignature: this.getAppSignature()
         };
     }
