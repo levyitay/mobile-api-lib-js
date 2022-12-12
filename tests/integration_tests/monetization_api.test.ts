@@ -29,7 +29,7 @@ describe('Monetize API - Integration Tests', function () {
   });
 
   describe('ironsource_reporting', function () {
-
+    return
     it('should return demo data', async function () {
       ironsource.setCredentials(DEMO_ACCOUNT_USER, DEMO_ACCOUNT_SECRET, DEMO_ACCOUNT_TOKEN);
       const res: any = await ironsource.MonetizeAPI().getMonetizationData('2020-01-01', '2020-01-01');
@@ -299,11 +299,11 @@ describe('Monetize API - Integration Tests', function () {
       ironSourceRateMap.set(10, ['US']);
       ironSourceRateMap.set(5, ['IL']);
       const ironSourceInstance = new IronSourceInstance('TEST', MonetizeEnums.AdUnits.RewardedVideo, testAppKey, false, { pricing: ironSourceRateMap });
-      const vungleInstance = new VungleInstance('Test', MonetizeEnums.AdUnits.RewardedVideo, true, 'TEST', 'TEST', 'TEST');
+      const vungleInstance = new VungleInstance('Test', MonetizeEnums.AdUnits.RewardedVideo, true, 'TEST', 'TEST', 'TEST', { rate: 2.5 });
       const res: any = await ironsource.MonetizeAPI().addInstances(testAppKey, [ironSourceInstance, vungleInstance]);
 
       expect(res).to.be.an('object').with.property('rewardedVideo');
-      expect(res.rewardedVideo.ironSource).to.be.an('array').with.lengthOf(3);
+      expect(res.rewardedVideo.ironSource).to.be.an('array').with.lengthOf(2);
       let newInstance;
       newInstance = await asyncFind(res.rewardedVideo.ironSource, async (obj: any) => {
         return (obj.name == "TEST" && obj.status == "inactive")
@@ -314,8 +314,22 @@ describe('Monetize API - Integration Tests', function () {
       expect(newInstance.pricing).to.be.an('array').with.lengthOf(2);
       expect(newInstance.pricing).to.have.deep.members([{ "eCPM": 10, "Countries": ["US"] }, { "eCPM": 5, "Countries": ["IL"] }])
       expect(res.rewardedVideo.Vungle).to.be.an('array').with.lengthOf(1);
+      expect(res.rewardedVideo.Vungle[0].rate).to.be.equal(2.5)
 
 
+
+
+    })
+
+    it('should add instance without appConfig level', async function () {
+
+      ironsource.setCredentials(API_CI_USER, API_CI_SECRET, API_CI_TOKEN);
+
+      expect(testAppKey).not.to.be.undefined;
+
+      const vungleInstance = new VungleInstance('Test_2', MonetizeEnums.AdUnits.RewardedVideo, true, '', '', 'TEST', { rate: 2.5 });
+      const res: any = await ironsource.MonetizeAPI().addInstances(testAppKey, [vungleInstance]);
+      expect(res.rewardedVideo.Vungle).to.be.an('array').with.lengthOf(2);
     })
 
     it('should update instances ', async function () {
@@ -344,7 +358,7 @@ describe('Monetize API - Integration Tests', function () {
 
       const res: any = await ironsource.MonetizeAPI().deleteInstance(testAppKey, ironSourceInstanceId);
       expect(res).to.be.an('object').with.property('rewardedVideo');
-      expect(res.rewardedVideo.ironSource).to.be.an('array').with.lengthOf(2);
+      expect(res.rewardedVideo.ironSource).to.be.an('array').with.lengthOf(1);
 
 
     })

@@ -363,7 +363,7 @@ describe('Monetize API - Unit Tests', function () {
 
             const reqOptions: AxiosRequestConfig = {
                 headers: { Authorization: "Bearer API_TOKEN" },
-                url: "https://platform.ironsrc.com/partners/publisher/instances/v1",
+                url: "https://platform.ironsrc.com/partners/publisher/instances/v3",
                 method: 'POST',
                 data: {
                     appKey: testAppKey,
@@ -411,11 +411,45 @@ describe('Monetize API - Unit Tests', function () {
 
         })
 
+        it('unit test - should create new instances without appConfig', async function () {
+
+            const reqOptions: AxiosRequestConfig = {
+                headers: { Authorization: "Bearer API_TOKEN" },
+                url: "https://platform.ironsrc.com/partners/publisher/instances/v3",
+                method: 'POST',
+                data: {
+                    appKey: testAppKey,
+                    configurations: {
+                        
+                        Vungle: {
+                           
+                            rewardedVideo: [
+                                {
+                                    PlacementId: 'TEST',
+                                    instanceName: 'Test',
+                                    status: 'active',
+                                }
+                            ]
+                        }
+                    }
+                }
+            };
+
+
+            const axiosStub = getExecuteRequestStub();
+            const vungleInstance = new VungleInstance('Test', MonetizeEnums.AdUnits.RewardedVideo, true, '', '', 'TEST');
+            const res: any = await ironsource.MonetizeAPI().addInstances(testAppKey, [ vungleInstance]);
+
+            expect(axiosStub).to.be.calledWith(reqOptions)
+
+
+        })
+
         it('unit test - should update instances ', async function () {
 
             const reqOptions: AxiosRequestConfig = {
                 headers: { Authorization: "Bearer API_TOKEN" },
-                url: "https://platform.ironsrc.com/partners/publisher/instances/v1",
+                url: "https://platform.ironsrc.com/partners/publisher/instances/v3",
                 method: 'PUT',
                 data: {
                     appKey: testAppKey,
@@ -462,7 +496,7 @@ describe('Monetize API - Unit Tests', function () {
         it('unit test - should delete an instance', async function () {
             const reqOptions: AxiosRequestConfig = {
                 headers: { Authorization: "Bearer API_TOKEN" },
-                url: "https://platform.ironsrc.com/partners/publisher/instances/v1",
+                url: "https://platform.ironsrc.com/partners/publisher/instances/v3",
                 method: 'DELETE',
                 params: {
                     appKey: testAppKey,
