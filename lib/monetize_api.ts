@@ -2,7 +2,7 @@
 
 import * as gzip from 'node-gzip';
 import * as zlib from 'zlib';
-
+import * as _ from 'lodash';
 import { Stream } from 'stream';
 import * as utils from './utils';
 import { MediationGroupPriority, TierType } from './models/adsource_priority';
@@ -12,6 +12,7 @@ import { ResponseObject } from './utils';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { BaseAPI } from './base_api';
 import { Placement } from './models/placement';
+
 
 export namespace MonetizeEnums {
     export enum AdUnitStatus {
@@ -308,7 +309,7 @@ export namespace IronSourceMonetizeAPI {
      * @hidden
      * @ignore
      */
-    const INSTANCES_API_URL = 'https://platform.ironsrc.com/partners/publisher/instances/v1';
+    const INSTANCES_API_URL = 'https://platform.ironsrc.com/partners/publisher/instances/v3';
     /**
      * @hidden
      * @ignore
@@ -321,7 +322,7 @@ export namespace IronSourceMonetizeAPI {
     export class API extends BaseAPI {
         [Symbol.toStringTag]: 'MonetizeAPI';
         [Symbol.toPrimitive]: 'MonetizeAPI';
-        
+
         /**
          * 
          * @param date {string} - Date in the following formate YYYY-MM-DD
@@ -871,6 +872,12 @@ export namespace IronSourceMonetizeAPI {
                     ...body.configurations[instance.getInstanceAdSourceName()],
                     ...({ appConfig: instance.getAppDataObject() })
                 };
+                if (body.configurations[instance.getInstanceAdSourceName()].appConfig) {
+                    const vals = Object.values(body.configurations[instance.getInstanceAdSourceName()].appConfig);
+                    if (_.find(vals, (o) => { return (o != ''); }) == undefined) {
+                        delete body.configurations[instance.getInstanceAdSourceName()].appConfig;
+                    }
+                }
                 if (body.configurations[instance.getInstanceAdSourceName()][instance.getInstanceAdUnit()] == undefined) {
                     body.configurations[instance.getInstanceAdSourceName()][instance.getInstanceAdUnit()] = [];
                 }
@@ -936,6 +943,7 @@ export namespace IronSourceMonetizeAPI {
                 const instanceConfig = (instance.getInstanceId() === -1) ? instance.toString() : { ...instance.toString(), ...{ instanceId: instance.getInstanceId() } };
 
                 body.configurations[instance.getInstanceAdSourceName()][instance.getInstanceAdUnit()].push(instanceConfig);
+                
 
             });
 
