@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/ironsource/mobile-api-lib-js/compare/v1.1.0...v1.1.1) (2022-12-14)
+
+
+### Bug Fixes
+
+* fix for TJ and AL instances ([9703cec](https://github.com/ironsource/mobile-api-lib-js/commit/9703cec9d99723137bc9ee4e1535ef7dda31aa23))
+
 ## [1.1.0](https://github.com/ironsource/mobile-api-lib-js/compare/v1.0.6...v1.1.0) (2022-12-12)
 
 
