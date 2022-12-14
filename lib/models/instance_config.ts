@@ -309,7 +309,7 @@ export class ApplovinInstance extends InstanceConfig {
     public toString(): any {
         const res = {
             ...super.toString(),
-            zoneId: this.getZoneId
+            zoneId: this.getZoneId()
         };
         return res;
     }
@@ -793,7 +793,7 @@ class TapJoyBase extends InstanceConfig {
     public toString(): any {
         return {
             ...super.toString(),
-            placementName: this.getPlacementName
+            placementName: this.getPlacementName()
         };
     }
 
