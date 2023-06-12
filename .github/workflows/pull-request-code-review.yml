@@ -11,7 +11,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-
+        with:
+          path: ${{ github.repository }}
       - name: AI Code Reviewer
         uses: levyitay/mobile-api-lib-js@main
         with:
