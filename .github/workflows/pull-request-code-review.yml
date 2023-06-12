@@ -14,8 +14,9 @@ jobs:
         with:
           path: ${{ github.repository }}
       - name: AI Code Reviewer
-        uses: freeedcom/ai-codereviewer@v2.4.1
+        uses: levyitay/ai-codereviewer@main
         with:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          
           exclude: "**/*.json, **/*.md"
