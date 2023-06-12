@@ -1984,13 +1984,8 @@ ___
 
 #### Vungle
 
-• **Vungle** = ``"Vungle"``
+• **Vungle** = ``"liftoffMonetize"``
 
-___
-
-#### VungleBidding
-
-• **VungleBidding** = ``"vungleBidding"``
 
 ___
 
