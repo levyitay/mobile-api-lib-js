@@ -12,9 +12,12 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+        with: 
+            repository: levyitay/mobile-api-lib-js@main
+            path: mobile-api-lib-js
 
       - name: AI Code Reviewer
-        uses: levyitay/mobile-api-lib-js
+        uses: levyitay/mobile-api-lib-js@main
         with:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
