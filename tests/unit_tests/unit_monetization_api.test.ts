@@ -380,7 +380,7 @@ describe('Monetize API - Unit Tests', function () {
                             }
                             ]
                         },
-                        Vungle: {
+                        liftoffMonetize: {
                             appConfig: {
                                 AppID: 'TEST',
                                 reportingAPIId: 'TEST'
@@ -421,7 +421,7 @@ describe('Monetize API - Unit Tests', function () {
                     appKey: testAppKey,
                     configurations: {
                         
-                        Vungle: {
+                        liftoffMonetize: {
                            
                             rewardedVideo: [
                                 {
@@ -562,7 +562,7 @@ describe('Monetize API - Unit Tests', function () {
                             tierType: 'sortByCpm',
                             instances: [
                                 {
-                                    providerName: 'Vungle',
+                                    providerName: 'liftoffMonetize',
                                     instanceId: 0,
                                     rate: 4
                                 }
@@ -621,7 +621,7 @@ describe('Monetize API - Unit Tests', function () {
                             tierType: 'sortByCpm',
                             instances: [
                                 {
-                                    providerName: 'Vungle',
+                                    providerName: 'liftoffMonetize',
                                     instanceId: 0,
                                     rate: 4
                                 }

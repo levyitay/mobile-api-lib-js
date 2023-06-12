@@ -1039,27 +1039,6 @@ ___
 | `options.instanceId?` | `number` |
 | `options.rate?` | `number` |
 
-<a name="classesvunglebiddinginstancemd"></a>
-
-## VungleBiddingInstance
-
-#### constructor
-
-• **new VungleBiddingInstance**(`instanceName`, `instanceAdUnit`, `status`, `appId`, `reportingApiId`, `placementId`, `options?`)
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `instanceName` | `string` |
-| `instanceAdUnit` | [`AdUnits`](#enumsmonetizeenumsadunitsmd) |
-| `status` | `boolean` |
-| `appId` | `string` |
-| `reportingApiId` | `string` |
-| `placementId` | `string` |
-| `options?` | `Object` |
-| `options.instanceId?` | `number` |
-| `options.rate?` | `number` |
 
 <a name="classesvungleinstancemd"></a>
 
