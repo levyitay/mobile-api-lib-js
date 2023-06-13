@@ -36,8 +36,8 @@ export namespace MonetizeEnums {
     export enum Networks {
         IronSource = 'ironSource',
         IronSourceBidding = 'ironSourceBidding',
-        Vungle = 'Vungle',
-        VungleBidding = 'vungleBidding',
+        LiftoffMonetize = 'liftoffMonetize',
+        Vungle = 'liftoffMonetize',
         AppLovin = 'AppLovin',
         AdColony = 'AdColony',
         AdColonyBidding = 'adColonyBidding',

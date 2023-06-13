@@ -313,8 +313,8 @@ describe('Monetize API - Integration Tests', function () {
       expect(newInstance.status).to.be.equal("inactive");
       expect(newInstance.pricing).to.be.an('array').with.lengthOf(2);
       expect(newInstance.pricing).to.have.deep.members([{ "eCPM": 10, "Countries": ["US"] }, { "eCPM": 5, "Countries": ["IL"] }])
-      expect(res.rewardedVideo.Vungle).to.be.an('array').with.lengthOf(1);
-      expect(res.rewardedVideo.Vungle[0].rate).to.be.equal(2.5)
+      expect(res.rewardedVideo.liftoffMonetize).to.be.an('array').with.lengthOf(1);
+      expect(res.rewardedVideo.liftoffMonetize[0].rate).to.be.equal(2.5)
 
 
 
@@ -329,7 +329,7 @@ describe('Monetize API - Integration Tests', function () {
 
       const vungleInstance = new VungleInstance('Test_2', MonetizeEnums.AdUnits.RewardedVideo, true, '', '', 'TEST', { rate: 2.5 });
       const res: any = await ironsource.MonetizeAPI().addInstances(testAppKey, [vungleInstance]);
-      expect(res.rewardedVideo.Vungle).to.be.an('array').with.lengthOf(2);
+      expect(res.rewardedVideo.liftoffMonetize).to.be.an('array').with.lengthOf(2);
     })
 
     it('should update instances ', async function () {

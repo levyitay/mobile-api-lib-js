@@ -1126,15 +1126,3 @@ export class VungleInstance extends VungleBase {
 
     }
 }
-
-export class VungleBiddingInstance extends VungleBase {
-
-    constructor(instanceName: string, instanceAdUnit: MonetizeEnums.AdUnits, status: boolean,
-        appId: string, reportingApiId: string, placementId: string, options?: { instanceId?: number, rate?: number }) {
-        const { instanceId, rate } = { ...defaultValues, ...options };
-        super(instanceName, instanceAdUnit, status, appId, reportingApiId, placementId, 
-            MonetizeEnums.Networks.VungleBidding, instanceId, rate);
-
-    }
-}
-
